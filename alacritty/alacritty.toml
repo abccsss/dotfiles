@@ -1,0 +1,49 @@
+[shell]
+program = 'wsl'
+args = ['--cd ~']
+
+[window]
+dimensions = { columns = 120, lines = 30 }
+padding = { x = 10, y = 10 }
+opacity = 0.85
+resize_increments = true
+
+[font]
+normal = { family = 'JetBrainsMono Nerd Font', style = 'Regular' }
+size = 13.25
+offset = { x = 1, y = 0 }
+
+[colors]
+  [colors.primary]
+  foreground = '#D8D8D8'
+  background = '#181C20'
+
+  [colors.normal]
+  black = '#000000'
+  blue = '#36A3D9'
+  cyan = '#95E6C8'
+  green = '#B8CC52'
+  magenta = '#F07178'
+  red = '#FF3333'
+  white = '#D8D8D8'
+  yellow = '#E7C547'
+
+  [colors.bright]
+  black = '#323232'
+  blue = '#68D5FF'
+  cyan = '#C7FFFD'
+  green = '#EAFE84'
+  magenta = '#FFA3AA'
+  red = '#FF6565'
+  white = '#FFFFFF'
+  yellow = '#FFF779'
+
+[selection]
+  save_to_clipboard = true
+
+[keyboard]
+  [[keyboard.bindings]]
+  key = 'V'
+  mods = 'Control'
+  mode = '~Vi'
+  action = 'Paste'
