@@ -161,6 +161,18 @@ return {
     end,
   },
   {
+    "micangl/cmp-vimtex",
+    config = function()
+      require("cmp").setup.filetype("tex", {
+        sources = {
+          { name = "vimtex" },
+          { name = "luasnip" },
+          { name = "buffer" },
+        },
+      })
+    end,
+  },
+  {
     "AstroNvim/astroui",
     ---@type AstroUIOpts
     opts = {

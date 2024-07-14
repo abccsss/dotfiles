@@ -6,6 +6,10 @@ return {
   "AstroNvim/astroui",
   ---@type AstroUIOpts
   opts = {
-    colorscheme = "astrodark",
+    highlights = {
+      astrolight = {
+        Normal = { fg = "#181C20", bg = "#F8F8F8" },
+      },
+    },
   },
 }

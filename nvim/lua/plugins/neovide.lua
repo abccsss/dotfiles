@@ -8,18 +8,15 @@ return {
     ---@type AstroCoreOpts
     opts = {
       options = {
+        g = {
+          neovide_theme = "auto",
+        },
         o = {
+          -- background = "light",
           -- guifont = "Fira Mono,FiraCode Nerd Font,JuliaMono:h12:#h-full",
           guifont = "JetBrainsMono Nerd Font,JuliaMono:h12:#h-full",
         },
       },
     },
   },
-  {
-    "AstroNvim/astroui",
-    ---@type AstroUIOpts
-    opts = {
-      colorscheme = "astrolight",
-    },
-  }
 }

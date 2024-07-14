@@ -1,5 +1,10 @@
 if not vim.env.WSL_DISTRO_NAME then
-  return
+  return {}
+end
+
+-- This file does not apply to Neovide
+if vim.g.neovide then
+  return {}
 end
 
 return {
