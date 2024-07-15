@@ -274,7 +274,7 @@ return {
                   c = {
                     add = function ()
                       local config = require("nvim-surround.config")
-                      local result = config.get_input("Surround with command: ")
+                      local result = config.get_input("Surround with command: \\")
                       if result then
                         return { { "\\" .. result .. "{" }, { "}" } }
                       end

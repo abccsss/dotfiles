@@ -8,7 +8,7 @@ return {
   opts = {
     highlights = {
       astrolight = {
-        Normal = { fg = "#181C20", bg = "#F8F8F8" },
+        Normal = { fg = "#4F4F4F", bg = "#F8F8F8" },
       },
     },
   },
