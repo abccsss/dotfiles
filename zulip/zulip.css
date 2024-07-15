@@ -1,0 +1,34 @@
+:root {
+  --line-height-sidebar-row: 2em !important;
+  --line-height-sidebar-row-prominent: 2.5em !important;
+}
+
+body {
+  --base-line-height-unitless: 1.6 !important;
+}
+
+body, button, input, select, body [data-tippy-root] {
+  font-family: 'Segoe UI', 'Microsoft YaHei UI', sans-serif !important;
+}
+
+textarea {
+  font-family: 'JetBrains Mono', 'Consolas', monospace !important;
+}
+
+ul.topic-list {
+  line-height: var(--line-height-sidebar-row) !important;
+}
+
+/* Adjust spacing between messages */
+.messagebox {
+  margin-bottom: 1em !important;
+}
+
+.message_row:last-child .messagebox {
+  margin-bottom: 0 !important;
+}
+
+.date_row {
+  margin-top: -1.5em !important;
+}
+
