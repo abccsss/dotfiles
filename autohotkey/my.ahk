@@ -1,20 +1,16 @@
 ﻿#Requires AutoHotKey >=2.0
 
-/*
-    Win-Esc to stop script
-*/
-#Esc:: {
-    result := MsgBox("Terminate AutoHotKey script?", , 0x24)
-    if (result = "Yes") {
-        ExitApp()
-    }
-}
+SetCapsLockState("AlwaysOff")
 
 /*
-    Win-q to toggle window borders
-    To specify windows, use #HotIf
+    CapsLock as Esc
 */
-#q:: {
+*CapsLock:: Esc
+
+/*
+    CapsLock-q to toggle window borders
+*/
+Capslock & q:: {
     ; No active window
     if (!WinExist("A") || (WinGetProcessName() = "explorer.exe" && WinGetClass() != "CabinetWClass"))
         return
@@ -32,9 +28,9 @@
 }
 
 /*
-    Win-c to centre window
+    CapsLock-c to centre window
 */
-#c:: {
+Capslock & c:: {
     ; No active window
     if (!WinExist("A") || (WinGetProcessName() = "explorer.exe" && WinGetClass() != "CabinetWClass"))
         return
@@ -48,15 +44,20 @@
 }
 
 /*
-    Win-f to focus certain windows
+    CapsLock-f to focus certain windows,
+    eg CapsLock-f f to focus Firefox
 */
-#f:: {
+Capslock & f:: {
     ; input of Length 1, Timeout 5 seconds; esc to cancel
     input := InputHook("L1 T5", "{Esc}")
     input.Start()
     input.Wait()
 
     switch (input.Input) {
+        ; VS Code
+        case "c":
+            WinTryActivate("ahk_exe Code.exe")
+
         ; Firefox
         case "f":
             WinTryActivate("ahk_exe firefox.exe")
@@ -64,6 +65,10 @@
 
         ; LaTeX workspace
         case "l":
+            WinTryActivate("ahk_exe sioyek.exe")
+            WinTryActivate("ahk_exe neovide.exe")
+        case "L":
+            WinMinimizeAll()
             WinTryActivate("ahk_exe sioyek.exe")
             WinTryActivate("ahk_exe neovide.exe")
 
@@ -75,7 +80,7 @@
         case "t":
             WinTryActivate("ahk_exe alacritty.exe")
                 || WinTryActivate("ahk_exe WindowsTerminal.exe")
-                || Run('"C:\Program Files\Alacritty\alacritty.exe"')
+                || Run("alacritty.exe")
         
         ; Zotero
         case "z":
@@ -98,21 +103,21 @@ WinTryActivate(title) {
 }
 
 /*
-    Win-Tab to activate PowerToys Run to switch windows
+    CapsLock-Space to activate PowerToys Run
 */
-#Tab:: {
+Capslock & Space:: !Space
+
+/*
+    CapsLock-Tab to activate PowerToys Run to switch windows
+*/
+Capslock & Tab:: {
     Send("!{Space}")
-
-    ; Release Win key to avoid buggy behaviour
-    Send("{LWin Up}")
-    Send("{RWin Up}")
-
-    loop 6 {
-        Sleep(100)
-        if (WinExist("A") && WinGetProcessName() = "PowerToys.PowerLauncher.exe") {
-            SendText("< ")
-            return
-        }
-    }
+    if (WinWaitActive("ahk_exe PowerToys.PowerLauncher.exe", , 1))
+        SendText("< ")
 }
 
+/*
+    CapsLock-Up and CapsLock-Down to maximize/restore/minimize
+*/
+CapsLock & Up:: WinExist("A") && (WinGetMinMax("A") = -1 ? WinRestore("A") : WinMaximize("A"))
+CapsLock & Down:: WinExist("A") && (WinGetMinMax("A") = 1 ? WinRestore("A") : WinMinimize("A"))
