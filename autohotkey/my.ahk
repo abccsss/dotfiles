@@ -8,6 +8,18 @@ SetCapsLockState("AlwaysOff")
 *CapsLock:: Esc
 
 /*
+    Ctrl-CapsLock as CapsLock
+*/
+^CapsLock:: CapsLock
+
+/*
+    CapsLock-Esc to sleep
+*/
+CapsLock & Esc:: {
+    DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
+}
+
+/*
     CapsLock-q to toggle window borders
 */
 Capslock & q:: {
@@ -79,7 +91,10 @@ Capslock & f:: {
         ; Terminal
         case "t":
             WinTryActivate("ahk_exe alacritty.exe")
-                || WinTryActivate("ahk_exe WindowsTerminal.exe")
+                || Run("alacritty.exe")
+        case "T":
+            WinMinimizeAll()
+            WinTryActivate("ahk_exe alacritty.exe")
                 || Run("alacritty.exe")
         
         ; Zotero
@@ -118,6 +133,10 @@ Capslock & Tab:: {
 
 /*
     CapsLock-Up and CapsLock-Down to maximize/restore/minimize
+    CapsLock-Left and CapsLock-Right as Win-Left and Win-Right
 */
 CapsLock & Up:: WinExist("A") && (WinGetMinMax("A") = -1 ? WinRestore("A") : WinMaximize("A"))
 CapsLock & Down:: WinExist("A") && (WinGetMinMax("A") = 1 ? WinRestore("A") : WinMinimize("A"))
+CapsLock & Left:: Send("#{Left}")
+CapsLock & Right:: Send("#{Right}")
+
