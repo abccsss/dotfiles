@@ -127,6 +127,10 @@ format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 symbol = ' '
 style = 'yellow'
 
+[rust]
+format = '[$symbol$version]($style) '
+style = '209'
+
 [custom.latex]
 command = "tex --version | head -n 1 | cut -d '(' -f 2 | cut -d ')' -f 1 | cut -d ' ' -f 2,3"
 detect_extensions = ['tex', 'ltx', 'bib', 'sty', 'cls']
