@@ -1,4 +1,5 @@
 ﻿#Requires AutoHotKey >=2.0
+#SingleInstance Force
 
 SetCapsLockState("AlwaysOff")
 
@@ -13,16 +14,17 @@ SetCapsLockState("AlwaysOff")
 ^CapsLock:: CapsLock
 
 /*
-    CapsLock-Esc to sleep
+    CapsLock-Esc to turn off screen
 */
 CapsLock & Esc:: {
-    DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
+    Sleep(1000)
+    SendMessage(0x112, 0xF170, 2, , "Program Manager")
 }
 
 /*
-    CapsLock-q to toggle window borders
+    CapsLock-b to toggle window borders
 */
-Capslock & q:: {
+Capslock & b:: {
     ; No active window
     if (!WinExist("A") || (WinGetProcessName() = "explorer.exe" && WinGetClass() != "CabinetWClass"))
         return
@@ -40,103 +42,123 @@ Capslock & q:: {
 }
 
 /*
-    CapsLock-c to centre window
+    Komorebi
 */
-Capslock & c:: {
-    ; No active window
-    if (!WinExist("A") || (WinGetProcessName() = "explorer.exe" && WinGetClass() != "CabinetWClass"))
-        return
-
-    ; Skip if maximized or minimized
-    if (WinGetMinMax("A") != 0)
-        return
-
-    WinGetPos(, , &w, &h, "A")
-    WinMove((A_ScreenWidth - w) // 2, Max(0, A_ScreenHeight - h) // 2 - 20, , , "A")
+Komorebic(cmd) {
+    RunWait("C:\Program Files\komorebi\bin\komorebic.exe " cmd, , "Hide")
 }
 
-/*
-    CapsLock-f to focus certain windows,
-    eg CapsLock-f f to focus Firefox
-*/
-Capslock & f:: {
-    ; input of Length 1, Timeout 5 seconds; esc to cancel
-    input := InputHook("L1 T5", "{Esc}")
-    input.Start()
-    input.Wait()
-
-    switch (input.Input) {
-        ; VS Code
-        case "c":
-            WinTryActivate("ahk_exe Code.exe")
-
-        ; Firefox
-        case "f":
-            WinTryActivate("ahk_exe firefox.exe")
-                || Run("firefox.exe")
-
-        ; LaTeX workspace
-        case "l":
-            WinTryActivate("ahk_exe sioyek.exe")
-            WinTryActivate("ahk_exe neovide.exe")
-        case "L":
-            WinMinimizeAll()
-            WinTryActivate("ahk_exe sioyek.exe")
-            WinTryActivate("ahk_exe neovide.exe")
-
-        ; Mail
-        case "m":
-            WinTryActivate("ahk_exe thunderbird.exe")
-
-        ; Terminal
-        case "t":
-            WinTryActivate("ahk_exe alacritty.exe")
-                || Run("alacritty.exe")
-        case "T":
-            WinMinimizeAll()
-            WinTryActivate("ahk_exe alacritty.exe")
-                || Run("alacritty.exe")
-        
-        ; Zotero
-        case "z":
-            WinTryActivate("ahk_exe zotero.exe")
-    }
+PowerShell(cmd) {
+    RunWait("PowerShell.exe -Command `"" cmd "`"", , "Hide")
 }
 
-WinTryActivate(title) {
-    ; Some windows create a second HWND when minimized,
-    ; and the false HWND will stay on top.
-    ; Filter out the false HWND by checking the window class.
-    for window in WinGetList(title) {
-        if WinGetClass(window) != "Winit Thread Event Target" {
-            WinActivate(window)
-            return window
-        }
-    }
+#HotIf GetKeyState("CapsLock", "P")
+; Focus windows
+h:: Komorebic("focus left")
+j:: Komorebic("focus down")
+k:: Komorebic("focus up")
+l:: Komorebic("focus right")
+[:: Komorebic("cycle-focus previous")
+]:: Komorebic("cycle-focus next")
 
-    return false
+; Move windows
++h:: Komorebic("move left")
++j:: Komorebic("move down")
++k:: Komorebic("move up")
++l:: Komorebic("move right")
++Enter:: Komorebic("promote")
+
+; Stack windows
+Left:: Komorebic("stack left")
+Down:: Komorebic("stack down")
+Up:: Komorebic("stack up")
+Right:: Komorebic("stack right")
+`;:: Komorebic("unstack")
+u:: Komorebic("cycle-stack previous")
+i:: Komorebic("cycle-stack next")
+
+; Resize windows
+=:: Komorebic("resize-axis horizontal increase")
+-:: Komorebic("resize-axis horizontal decrease")
++=:: Komorebic("resize-axis vertical increase")
++_:: Komorebic("resize-axis vertical decrease")
+
+; Manipulate windows
+q:: Komorebic("close")
+t:: Komorebic("toggle-float")
+m:: Komorebic("minimize")
+.:: Komorebic("toggle-maximize")
+,:: Komorebic("toggle-monocle")
+r:: Komorebic("retile")
+
+; Workspaces
+1::
+Numpad1:: Komorebic("focus-workspace 0")
+2::
+Numpad2:: Komorebic("focus-workspace 1")
+3::
+Numpad3:: Komorebic("focus-workspace 2")
+4::
+Numpad4:: Komorebic("focus-workspace 3")
+5::
+Numpad5:: Komorebic("focus-workspace 4")
+6::
+Numpad6:: Komorebic("focus-workspace 5")
+7::
+Numpad7:: Komorebic("focus-workspace 6")
+8::
+Numpad8:: Komorebic("focus-workspace 7")
+9::
+Numpad9:: Komorebic("focus-workspace 8")
+0::
+Numpad0:: Komorebic("focus-workspace 9")
+
+; Move windows across workspaces
++1::
++NumPad1:: Komorebic("move-to-workspace 0")
++2::
++NumPad2:: Komorebic("move-to-workspace 1")
++3::
++NumPad3:: Komorebic("move-to-workspace 2")
++4::
++NumPad4:: Komorebic("move-to-workspace 3")
++5::
++NumPad5:: Komorebic("move-to-workspace 4")
++6::
++NumPad6:: Komorebic("move-to-workspace 5")
++7::
++NumPad7:: Komorebic("move-to-workspace 6")
++8::
++NumPad8:: Komorebic("move-to-workspace 7")
++9::
++NumPad9:: Komorebic("move-to-workspace 8")
++0::
++NumPad0:: Komorebic("move-to-workspace 9")
+
+; Komorebi bar
+\:: StartKomorebiBar()
++\:: StopKomorebiBar()
+`:: StartKomorebi()
++`:: StopKomorebi()
+#HotIf
+
+StartKomorebi() {
+    StopKomorebi()
+    Komorebic("start")
 }
 
-/*
-    CapsLock-Space to activate PowerToys Run
-*/
-Capslock & Space:: !Space
-
-/*
-    CapsLock-Tab to activate PowerToys Run to switch windows
-*/
-Capslock & Tab:: {
-    Send("!{Space}")
-    if (WinWaitActive("ahk_exe PowerToys.PowerLauncher.exe", , 1))
-        SendText("< ")
+StopKomorebi() {
+    Komorebic("stop")
 }
 
-/*
-    CapsLock-Up and CapsLock-Down to maximize/restore/minimize
-    CapsLock-Left and CapsLock-Right as Win-Left and Win-Right
-*/
-CapsLock & Up:: WinExist("A") && (WinGetMinMax("A") = -1 ? WinRestore("A") : WinMaximize("A"))
-CapsLock & Down:: WinExist("A") && (WinGetMinMax("A") = 1 ? WinRestore("A") : WinMinimize("A"))
-CapsLock & Left:: Send("#{Left}")
-CapsLock & Right:: Send("#{Right}")
+StartKomorebiBar() {
+    StopKomorebiBar()
+    ; PowerShell("Start-Process 'C:\Program Files\komorebi\bin\komorebi-bar.exe' -WindowStyle hidden")
+    PowerShell("Start-Process 'C:\Program Files (x86)\hitokage\bin\hitokage.exe' -WindowStyle hidden")
+}
+
+StopKomorebiBar() {
+    ; PowerShell("Stop-Process -Name:komorebi-bar -ErrorAction SilentlyContinue")
+    PowerShell("Stop-Process -Name:hitokage -ErrorAction SilentlyContinue")
+}
 

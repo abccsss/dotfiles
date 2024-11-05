@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.29/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "animation": {
+    "enabled": true,
+    "duration": 200,
+    "style": "EaseInOutCubic"
+  },
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "mouse_follows_focus": false,
+  "default_workspace_padding": 15,
+  "default_container_padding": 20,
+  "border": true,
+  "border_width": 8,
+  "border_offset": -2,
+  "resize_delta": 100,
+  "transparency": true,
+  "transparency_alpha": 216,
+  "theme": {
+    "palette": "Base16",
+    "name": "Ashes",
+    "unfocused_border": "Base03",
+    "bar_accent": "Base0D"
+  },
+  "stackbar": {
+    "height": 40,
+    "mode": "OnStack",
+    "label": "Title",
+    "tabs": {
+      "width": 300,
+      "font_family": "Microsoft Yahei UI",
+      "font_size": 36
+    }
+  },
+  "manage_rules": [
+    {
+      "kind": "class",
+      "id": "WeChatMainWndForPC",
+      "matching_strategy": "Equals",
+    }
+  ],
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "2",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          },
+          "initial_workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "thunderbird.exe",
+              "matching_strategy": "Equals"
+            }
+          ]
+        },
+        {
+          "name": "3",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          },
+          "initial_workspace_rules": [
+            {
+              "kind": "Class",
+              "id": "WeChatMainWndForPC",
+              "matching_strategy": "Equals"
+            },
+            {
+              "kind": "Title",
+              "id": "WhatsApp",
+              "matching_strategy": "Equals"
+            },
+            {
+              "kind": "Exe",
+              "id": "Zulip.exe",
+              "matching_strategy": "Equals"
+            }
+          ]
+        },
+        {
+          "name": "4",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          },
+          "initial_workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "zotero.exe",
+              "matching_strategy": "Equals"
+            }
+          ]
+        },
+        {
+          "name": "5",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          },
+          "initial_workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "neovide.exe",
+              "matching_strategy": "Equals"
+            }
+          ]
+        },
+        {
+          "name": "6",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "7",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "8",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "9",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "10",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        }
+      ]
+    }
+  ]
+}

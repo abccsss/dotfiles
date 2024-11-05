@@ -1,0 +1,76 @@
+.bar {
+  background-color: #202428c0;
+  color: #ccc;
+
+  font-family: 'CommitMono Nerd Font', 'JetBrainsMono Nerd Font', monospace;
+  font-size: 25px;
+  letter-spacing: 1px;
+  min-height: 50px;
+}
+
+.workspace {
+  margin: 7px 0px;
+}
+
+.workspacechild {
+  margin-left: 5px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  padding: 4px 8px;
+  line-height: 24px;
+
+  transition: all 200ms;
+  transition-property: color, background-color, border-color;
+}
+
+.workspacechild:first-child {
+  margin-left: 0px;
+}
+
+.workspacechild:hover {
+  background-color: #c0c0c040;
+}
+
+.workspacechild:selected {
+  background-color: #8870b0;
+  border: 2px solid #b8a0d0;
+  color: #f8f8f8;
+  font-weight: bold;
+}
+
+.left-box {
+  margin-left: 20px;
+  min-width: 500px;
+}
+
+.right-box {
+  margin-right: 20px;
+  min-width: 500px;
+}
+
+.clock-date {
+  color: #f0e8ff;
+}
+
+.clock-dow {
+  color: #d0b8ff;
+}
+
+.clock-time {
+  color: #f0e8ff;
+}
+
+.separator {
+  color: #ccc;
+}
+
+.icon {
+  color: #8878b0;
+  margin-right: 16px;
+  margin-left: 32px;
+}
+
+.percentage {
+  margin-left: -8px;
+}
+
