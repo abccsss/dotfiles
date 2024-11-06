@@ -32,9 +32,9 @@
 }
 
 .workspacechild:selected {
-  background-color: #8870b0;
+  background-color: #7860a0;
   border: 2px solid #b8a0d0;
-  color: #f8f8f8;
+  color: #f0e8ff;
   font-weight: bold;
 }
 
@@ -70,7 +70,11 @@
   margin-left: 32px;
 }
 
+.text-icon {
+  color: #d0b8ff;
+}
+
 .percentage {
-  margin-left: -8px;
+  /* margin-left: -8px; */
 }
 

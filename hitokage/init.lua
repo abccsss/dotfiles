@@ -16,11 +16,11 @@ for _, monitor in ipairs(monitors) do
           hexpand = true,
           halign = "Center",
           widgets = {
-            { Clock = { class = "clock-date", format = " %Y %m %d " } },
-            { Label = { class = "separator", label = "|" } },
-            { Clock = { class = "clock-dow", format = " %a " } },
-            { Label = { class = "separator", label = "|" } },
-            { Clock = { class = "clock-time", format = " %H %M %S " } },
+            { Clock = { class = "clock-date", format = "%Y %m %d" } },
+            { Label = { class = "separator", label = " | " } },
+            { Clock = { class = "clock-dow", format = "%a" } },
+            { Label = { class = "separator", label = " | " } },
+            { Clock = { class = "clock-time", format = "%H %M %S  " } },
           }
         }
       },
@@ -29,12 +29,14 @@ for _, monitor in ipairs(monitors) do
           class = "right-box",
           widgets = {
             { Box = { hexpand = true } },
-            { Label = { class = "icon", label = "\u{f4bc}" } },
+            { Label = { class = "text-icon", label = "CPU " } },
             { Cpu = { class = "percentage", format = "{{(pad 'left' (round (mult usage 100) 0) 3)}}%" } },
-            { Label = { class = "icon", label = "\u{e266}" } },
+            { Label = { class = "separator", label = " | " } },
+            { Label = { class = "text-icon", label = "RAM " } },
             { Memory = { class = "percentage", format = "{{(pad 'left' (round (mult (div used total) 100) 0) 3)}}%" } },
-            { Label = { class = "icon", label = "\u{f0079}" } },
-            { Battery = { class = "percentage", format = "{{(pad 'left' (round (mult capacity 100) 0) 3)}}%", halign = "End" } },
+            { Label = { class = "separator", label = " | " } },
+            { Label = { class = "text-icon", label = "BAT " } },
+            { Battery = { class = "percentage", format = "{{(pad 'left' (round (mult capacity 100) 0) 3)}}%" } },
           }
         }
       },
