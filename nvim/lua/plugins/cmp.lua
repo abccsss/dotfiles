@@ -29,15 +29,5 @@ return { -- override nvim-cmp plugin
         },
       }),
     })
-
-    -- disable tab completion; enter to accept
-    local cmp_mapping = cmp.mapping.preset.insert({
-      ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    })
-    cmp_mapping["<Tab>"] = vim.NIL
-    cmp_mapping["<S-Tab>"] = vim.NIL
-    cmp.setup({
-      mapping = cmp_mapping,
-    })
   end,
 }
