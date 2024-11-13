@@ -1,25 +1,4 @@
 {
-  "\\[": {
-    "prefix": "\\[",
-    "body": [
-      "\\[",
-      "\t$0",
-      "\\"
-    ]
-  },
-  "item": {
-    "prefix": "item",
-    "body": [
-      "\\item",
-      "\t$0"
-    ]
-  },
-  "paragraph": {
-    "prefix": "paragraph",
-    "body": [
-      "\\paragraph{$0}"
-    ]
-  },
   "begin": {
     "prefix": "begin",
     "body": [

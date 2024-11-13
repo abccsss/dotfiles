@@ -5,6 +5,7 @@ end
 local map = vim.keymap.set
 
 vim.g.neovide_theme = "auto"
+vim.g.neovide_floating_shadow = false
 vim.opt.guifont = "JetBrainsMono Nerd Font,JuliaMono:h14:#h-full"
 
 map(

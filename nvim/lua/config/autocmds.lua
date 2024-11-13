@@ -30,6 +30,9 @@ autocmd("VimEnter", {
 autocmd("FileType", {
   pattern = "tex",
   callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+
     -- Add custom key maps
     local wk = require("which-key")
     local latex_icon = {
@@ -46,9 +49,10 @@ autocmd("FileType", {
       { "<leader>ll", "<plug>(vimtex-compile)", desc = "Compile LaTeX", buffer = 0 },
       { "<leader>lt", "<plug>(vimtex-toc-open)", desc = "Open table of contents", buffer = 0 },
       { "<leader>lT", "<plug>(vimtex-toc-toggle)", desc = "Toggle table of contents", buffer = 0 },
-      { "<leader>lv", "<plug>(vimtex-toc-view)", desc = "View output", buffer = 0 },
+      { "<leader>lv", "<plug>(vimtex-view)", desc = "View output", buffer = 0 },
     })
 
+    -- Add surrounds
     require("nvim-surround").buffer_setup({
       surrounds = {
         ["\\"] = {
