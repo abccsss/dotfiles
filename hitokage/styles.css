@@ -4,27 +4,31 @@
 
   font-family: 'CommitMono Nerd Font', 'JetBrainsMono Nerd Font', monospace;
   font-size: 25px;
-  letter-spacing: 1px;
-  min-height: 50px;
+  letter-spacing: .05em;
+  min-height: 2em;
+}
+
+.bar.bar-low-res {
+  font-size: 16px;
 }
 
 .workspace {
-  margin: 7px 0px;
+  margin: .3em 0;
 }
 
 .workspacechild {
-  margin-left: 5px;
-  border-radius: 10px;
-  border: 2px solid transparent;
-  padding: 4px 8px;
-  line-height: 24px;
+  margin-left: .2em;
+  border-radius: .4em;
+  border: .08em solid transparent;
+  padding: .16em .36em;
+  line-height: 1em;
 
   transition: all 200ms;
   transition-property: color, background-color, border-color;
 }
 
 .workspacechild:first-child {
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .workspacechild:hover {
@@ -33,19 +37,19 @@
 
 .workspacechild:selected {
   background-color: #7860a0;
-  border: 2px solid #b8a0d0;
+  border: .08em solid #b8a0d0;
   color: #f0e8ff;
   font-weight: bold;
 }
 
 .left-box {
-  margin-left: 20px;
-  min-width: 500px;
+  margin-left: .8em;
+  min-width: 20em;
 }
 
 .right-box {
-  margin-right: 20px;
-  min-width: 500px;
+  margin-right: .8em;
+  min-width: 20em;
 }
 
 .clock-date {
@@ -66,8 +70,8 @@
 
 .icon {
   color: #8878b0;
-  margin-right: 16px;
-  margin-left: 32px;
+  margin-right: .6em;
+  margin-left: 1.2em;
 }
 
 .text-icon {

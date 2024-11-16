@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.29/schema.json",
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
   "animation": {
-    "enabled": true,
+    "enabled": false,
     "duration": 200,
     "style": "EaseInOutCubic"
   },
@@ -10,7 +10,7 @@
   "cross_monitor_move_behaviour": "Insert",
   "mouse_follows_focus": false,
   "default_workspace_padding": 15,
-  "default_container_padding": 20,
+  "default_container_padding": 15,
   "border": true,
   "border_width": 8,
   "border_offset": -2,
@@ -40,6 +40,9 @@
       "matching_strategy": "Equals",
     }
   ],
+  "display_index_preferences": {
+    "0": "AUO1A94-4&29cc0c22&0&UID8388688"
+  },
   "monitors": [
     {
       "workspaces": [
@@ -146,6 +149,80 @@
         },
         {
           "name": "10",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "11",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "12",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "13",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "14",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "15",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "16",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "17",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "18",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "19",
+          "layout_rules": {
+            "1": "BSP",
+            "4": "Grid",
+          }
+        },
+        {
+          "name": "20",
           "layout_rules": {
             "1": "BSP",
             "4": "Grid",

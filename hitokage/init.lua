@@ -1,7 +1,11 @@
 local monitors = hitokage.monitor.get_all()
 
 for _, monitor in ipairs(monitors) do
+  local is_low_res = monitor.geometry.width < 2000
+  local bar_class = is_low_res and "bar-low-res" or ""
+
   monitor:attach({
+    class = bar_class,
     children = {
       {
         Box = {
