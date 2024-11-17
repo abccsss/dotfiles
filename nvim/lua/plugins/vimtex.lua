@@ -1,5 +1,100 @@
--- LaTeX related config also in lua/config/autocmds.lua
--- and lua/config/highlights.lua
+local function create_latex_autocmd()
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "bib", "tex" },
+    callback = function()
+      vim.bo.tabstop = 4
+      vim.bo.shiftwidth = 4
+
+      -- Add custom key maps
+      local wk = require("which-key")
+      local latex_icon = {
+        icon = "",
+        hl = "MiniIconsAzure",
+      }
+
+      wk.add({
+        {
+          buffer = 0,
+          icon = latex_icon,
+          { "<leader>l", group = "VimTeX" },
+          { "<leader>lc", "<plug>(vimtex-clean)", desc = "Clean auxiliary files" },
+          { "<leader>lC", "<plug>(vimtex-clean-full)", desc = "Clean auxiliary, output files" },
+          { "<leader>le", "<plug>(vimtex-errors)", desc = "Show errors" },
+          { "<leader>lg", "<plug>(vimtex-status)", desc = "VimTex status" },
+          { "<leader>lk", "<plug>(vimtex-stop)", desc = "Stop compilation" },
+          { "<leader>ll", "<plug>(vimtex-compile)", desc = "Compile LaTeX" },
+          { "<leader>lt", "<plug>(vimtex-toc-open)", desc = "Open table of contents" },
+          { "<leader>lT", "<plug>(vimtex-toc-toggle)", desc = "Toggle table of contents" },
+          { "<leader>lv", "<plug>(vimtex-view)", desc = "View LaTeX PDF" },
+        },
+        {
+          buffer = 0,
+          icon = latex_icon,
+          mode = { "n", "x" },
+          { "<f5>", "<plug>(vimtex-compile)", desc = "Compile LaTeX" },
+          { "<f6>", "<plug>(vimtex-view)", desc = "View LaTeX PDF" },
+        },
+      })
+
+      if vim.bo.filetype == "tex" then
+        wk.add({
+          {
+            buffer = 0,
+            icon = latex_icon,
+            mode = { "n", "x", "o" },
+            { "[[", "<plug>(vimtex-[[)", desc = "Prev section" },
+            { "[]", "<plug>(vimtex-[])", desc = "Prev end of section" },
+            { "[m", "<plug>(vimtex-[m)", desc = "Prev environment" },
+            { "[M", "<plug>(vimtex-[M)", desc = "Prev end of environment" },
+            { "[n", "<plug>(vimtex-[n)", desc = "Prev formula" },
+            { "[N", "<plug>(vimtex-[N)", desc = "Prev end of formula" },
+            { "][", "<plug>(vimtex-][)", desc = "Next end of section" },
+            { "]]", "<plug>(vimtex-]])", desc = "Next section" },
+            { "]m", "<plug>(vimtex-]m)", desc = "Next environment" },
+            { "]M", "<plug>(vimtex-]M)", desc = "Next end of environment" },
+            { "]n", "<plug>(vimtex-]n)", desc = "Prev formula" },
+            { "]N", "<plug>(vimtex-]N)", desc = "Prev end of formula" },
+          },
+        })
+      end
+
+      -- Add surrounds
+      require("nvim-surround").buffer_setup({
+        surrounds = {
+          ["\\"] = {
+            add = function()
+              local config = require("nvim-surround.config")
+              local result = config.get_input("Surround with command: \\")
+              if result then
+                return { { "\\" .. result .. "{" }, { "}" } }
+              end
+            end,
+          },
+          e = {
+            add = function()
+              local config = require("nvim-surround.config")
+              local result = config.get_input("Surround with environment: ")
+              if result then
+                if string.find(result, " ") then
+                  local first, rest = string.match(result, "(%S+)%s+(.+)")
+                  return {
+                    { "\\begin{" .. first .. "}[" .. rest .. "]" },
+                    { "\\end{" .. first .. "}" },
+                  }
+                else
+                  return { { "\\begin{" .. result .. "}" }, { "\\end{" .. result .. "}" } }
+                end
+              end
+            end,
+          },
+          S = {
+            add = { "\\smash{", "}" },
+          },
+        },
+      })
+    end,
+  })
+end
 
 return {
   {
@@ -7,6 +102,8 @@ return {
     lazy = false,
     config = function()
       -- PDF viewer
+      -- Need the following line in sioyek config:
+      --   vimtex_wsl_fix 1
       vim.g.vimtex_view_method = "sioyek"
       vim.g.vimtex_view_sioyek_exe = "sioyek.exe"
       vim.g.vimtex_callback_progpath = "wsl nvim"
@@ -57,6 +154,7 @@ return {
         -- Text commands
         { name = "S", conceal = 1, concealchar = "§" },
         { name = "hyph", cmdre = "-", conceal = 1 },
+        { name = "italcorr", cmdre = "/", conceal = 1 },
         { name = "dash", cmdre = "\\=/", conceal = 1, concealchar = "-" },
 
         -- Misc
@@ -145,6 +243,8 @@ return {
           wrapper = "vimtex#imaps#wrap_trivial",
         },
       }
+
+      create_latex_autocmd()
     end,
   },
 }

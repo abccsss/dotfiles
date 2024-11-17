@@ -3,8 +3,9 @@ local is_wsl = vim.fn.has("wsl") == 1
 -- my custom options
 vim.g.my = {}
 
-vim.opt.background = "dark"
-vim.opt.linebreak = false
+vim.o.background = "dark"
+vim.o.linebreak = false
+vim.o.spell = true
 
 -- WSL clipboard
 if is_wsl then

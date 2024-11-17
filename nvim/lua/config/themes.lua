@@ -4,8 +4,11 @@ my.colorscheme_dark = "catppuccin-mocha"
 my.colorscheme_light = "catppuccin-latte"
 
 my.lualine_theme_light = require("catppuccin.utils.lualine")("latte")
-my.lualine_theme_light.normal.a.bg = "#4090e0"
-my.lualine_theme_light.normal.b.fg = "#4090e0"
+my.lualine_theme_light.normal.a.fg = "#eff1f5"
+my.lualine_theme_light.normal.a.bg = "#4080d8"
+my.lualine_theme_light.normal.b.fg = "#4080d8"
+my.lualine_theme_light.command.a.bg = "#e86820"
+my.lualine_theme_light.command.b.fg = "#e86820"
 
 my.lualine_theme_dark = require("catppuccin.utils.lualine")("mocha")
 
@@ -17,85 +20,77 @@ my.highlights_light = {
   BufferLineModifiedVisible = { fg = "#f89060" },
 
   -- LaTeX
-  Conceal = { fg = "#0080c8" },
+  Conceal = { link = "texCmd" },
   texConcealedArg = { link = "Normal" },
 
-  texMathArg = { fg = "#408020" },
-  texMathDelim = { fg = "#408020" },
-  texMathOper = { fg = "#408020" },
-  texMathSub = { fg = "#408020" },
-  texMathSuper = { fg = "#408020" },
-  texMathSuperSub = { fg = "#408020" },
-  texMathZone = { fg = "#408020" },
+  texMathZone = { link = "String" },
+  texMathArg = { link = "texMathZone" },
+  texMathDelim = { link = "texMathZone" },
+  texMathOper = { link = "texMathZone" },
+  texMathSub = { link = "texMathZone" },
+  texMathSuper = { link = "texMathZone" },
+  texMathSuperSub = { link = "texMathZone" },
 
   texEnvOpt = { link = "Normal" },
   texFileOpt = { link = "Normal" },
   texRefConcealedOpt1 = { link = "Normal" },
   texTabularCol = { link = "Normal" },
 
-  texPartArgTitle = { fg = "#4F4F4F", bold = true },
-  texTitleArg = { fg = "#4F4F4F", bold = true },
+  texPartArgTitle = { bold = true },
+  texTitleArg = { bold = true },
 
-  bibType = { fg = "#0080c8" },
-  texCmd = { fg = "#0080c8" },
-  texDelim = { fg = "#0080c8" },
-  texLigature = { fg = "#0080c8" },
-  texMathSymbol = { fg = "#0080c8" },
-  texSpecialChar = { fg = "#0080c8" },
-  texTabularChar = { fg = "#0080c8" },
+  texCmd = { fg = "#0078d0" },
+  texCmdStyle = { link = "texCmd" },
+  texDelim = { link = "texCmd" },
+  texLigature = { link = "texCmd" },
+  texMathSymbol = { link = "texCmd" },
+  texSpecialChar = { link = "texCmd" },
+  texTabularChar = { link = "texCmd" },
 
-  texCmdPart = { fg = "#0080c8", bold = true },
+  texCmdPart = { fg = "#0078d0", bold = true },
 
-  texEnvArgName = { fg = "#D66C00" },
-  texMathEnvArgName = { fg = "#D66C00" },
+  texEnvArgName = { link = "Type" },
+  texMathEnvArgName = { link = "Type" },
 
-  bibKey = { fg = "#b010c0" },
-  texFileArg = { fg = "#b010c0" },
-  texRefArg = { fg = "#b010c0" },
-
-  bibEntryKw = { fg = "#408020" },
-  bibVariable = { fg = "#408020", italic = true },
+  texRefArg = { fg = "#d070c8" },
+  texFileArg = { link = "texRefArg" },
 }
 
 my.highlights_dark = {
   Conceal = { link = "Function" },
   texConcealedArg = { link = "Normal" },
 
-  texMathArg = { fg = "#a6e3a1" },
-  texMathDelim = { fg = "#a6e3a1" },
-  texMathOper = { fg = "#a6e3a1" },
-  texMathSub = { fg = "#a6e3a1" },
-  texMathSuper = { fg = "#a6e3a1" },
-  texMathSuperSub = { fg = "#a6e3a1" },
-  texMathZone = { fg = "#a6e3a1" },
+  texMathZone = { link = "String" },
+  texMathArg = { link = "texMathZone" },
+  texMathDelim = { link = "texMathZone" },
+  texMathOper = { link = "texMathZone" },
+  texMathSub = { link = "texMathZone" },
+  texMathSuper = { link = "texMathZone" },
+  texMathSuperSub = { link = "texMathZone" },
 
   texEnvOpt = { link = "Normal" },
   texFileOpt = { link = "Normal" },
   texRefConcealedOpt1 = { link = "Normal" },
   texTabularCol = { link = "Normal" },
 
-  texPartArgTitle = { fg = "#cdd6f4", bold = true },
-  texTitleArg = { fg = "#cdd6f4", bold = true },
+  texPartArgTitle = { bold = true },
+  texTitleArg = { bold = true },
 
-  bibType = { link = "Function" },
   texCmd = { link = "Function" },
-  texDelim = { link = "Function" },
-  texLigature = { link = "Function" },
-  texMathSymbol = { link = "Function" },
-  texSpecialChar = { link = "Function" },
-  texTabularChar = { link = "Function" },
+  texCmdStyle = { link = "texCmd" },
+  texDelim = { link = "texCmd" },
+  texLigature = { link = "texCmd" },
+  texMathSymbol = { link = "texCmd" },
+  texSpecialChar = { link = "texCmd" },
+  texTabularChar = { link = "texCmd" },
 
   texCmdPart = { fg = "#89b4fa", bold = true },
 
-  texEnvArgName = { fg = "#f9e2af" },
-  texMathEnvArgName = { fg = "#f9e2af" },
+  texEnvArgName = { link = "Type" },
+  texMathEnvArgName = { link = "Type" },
 
-  bibKey = { fg = "#cba6f7" },
-  texFileArg = { fg = "#cba6f7" },
-  texRefArg = { fg = "#cba6f7" },
-
-  bibEntryKw = { fg = "#a6e3a1" },
-  bibVariable = { fg = "#a6e3a1", italic = true },
+  texFileArg = { link = "Keyword" },
+  texRefArg = { link = "Keyword" },
 }
 
 vim.g.my = my

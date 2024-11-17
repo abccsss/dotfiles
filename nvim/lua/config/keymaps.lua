@@ -14,10 +14,12 @@ map({ "n", "x" }, "M", "gM", { desc = "Move to middle of line" })
 map("i", "<c-bs>", "<c-w>", { desc = "Delete word" })
 
 -- f7 to toggle terminal
-map({ "n", "x", "t" }, "<f7>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle terminal" })
+map({ "n", "x", "c", "t" }, "<f7>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle terminal" })
 
 -- f8 to toggle dark theme
-Snacks.toggle.option("background", { off = "light", on = "dark", name = "dark theme" }):map("<f8>")
+Snacks.toggle
+  .option("background", { off = "light", on = "dark", name = "dark theme" })
+  :map("<f8>", { mode = { "n", "x", "c", "t" } })
 
 -- LazyVim
 unmap("n", "<leader>l")

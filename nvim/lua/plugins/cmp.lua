@@ -36,6 +36,10 @@ return { -- override nvim-cmp plugin
       end
     end, { "i", "s", "c" })
 
+    opts.experimental = {
+      ghost_text = false,
+    }
+
     -- run cmp setup
     cmp.setup(opts)
 
