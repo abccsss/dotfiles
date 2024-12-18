@@ -8,7 +8,7 @@ return {
     end,
     keys = function(_, keys)
       table.insert(keys, { "<c-p>", "<cmd>Telescope find_files<CR>", desc = "Find files", mode = "n" })
-      table.insert(keys, { "<leader>gg", "<cmd>Telescope git_status<CR>", desc = "Git status", mode = "n" })
+      table.insert(keys, { "<leader>gt", "<cmd>Telescope git_status<CR>", desc = "Git status", mode = "n" })
     end,
   },
 }

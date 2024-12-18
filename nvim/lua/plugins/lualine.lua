@@ -5,7 +5,32 @@ return {
     -- Modified version of LazyVim defaults at:
     -- https://www.lazyvim.org/plugins/ui
     opts = function(_, opts)
+      opts.sections.lualine_b = {
+        {
+          "gitstatus",
+          sections = {
+            { "branch", format = " {}" },
+            { "is_dirty", format = "*" },
+          },
+          sep = "",
+        },
+      }
+
       opts.sections.lualine_c = {
+        {
+          "gitstatus",
+          sections = {
+            { "ahead", format = "{}↑", hl = "MiniIconsYellow" },
+            { "behind", format = "{}↓", hl = "MiniIconsYellow" },
+            { "conflicted", format = "{}!", hl = "MiniIconsRed" },
+            { "staged", format = "{}=", hl = "MiniIconsBlue" },
+            { "untracked", format = "{}+", hl = "MiniIconsGreen" },
+            { "modified", format = "{}*", hl = "MiniIconsAzure" },
+            { "renamed", format = "{}~", hl = "MiniIconsAzure" },
+            { "deleted", format = "{}-", hl = "MiniIconsRed" },
+          },
+          sep = " ",
+        },
         {
           "diagnostics",
           symbols = {
@@ -37,7 +62,6 @@ return {
 
       -- Filetype
       opts.sections.lualine_y = {
-        { "encoding", separator = "", padding = { left = 1, right = 0 } },
         { "bo:filetype" },
       }
 
