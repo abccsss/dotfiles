@@ -5,6 +5,7 @@ vim.g.my = {}
 
 vim.o.background = "dark"
 vim.o.linebreak = false
+vim.o.selectmode = "mouse" -- Enter select mode on mouse
 vim.o.spell = true
 
 -- WSL clipboard

@@ -24,6 +24,10 @@ return {
             { "behind", format = "{}↓", hl = "MiniIconsYellow" },
             { "conflicted", format = "{}!", hl = "MiniIconsRed" },
             { "staged", format = "{}=", hl = "MiniIconsBlue" },
+            -- { "staged_added", format = "{}=+", hl = "MiniIconsBlue" },
+            -- { "staged_modified", format = "{}=*", hl = "MiniIconsBlue" },
+            -- { "staged_renamed", format = "{}=~", hl = "MiniIconsBlue" },
+            -- { "staged_deleted", format = "{}=-", hl = "MiniIconsBlue" },
             { "untracked", format = "{}+", hl = "MiniIconsGreen" },
             { "modified", format = "{}*", hl = "MiniIconsAzure" },
             { "renamed", format = "{}~", hl = "MiniIconsAzure" },
@@ -45,10 +49,10 @@ return {
         { LazyVim.lualine.pretty_path() },
       }
 
-      -- Color of copilot icon
-      opts.sections.lualine_x[2].color = function()
-        return LazyVim.ui.fg("Special")
-      end
+      -- -- Color of copilot icon
+      -- opts.sections.lualine_x[2].color = function()
+      --   return LazyVim.ui.fg("Special")
+      -- end
 
       -- Remove lazy.status which shows number of plugins
       table.remove(opts.sections.lualine_x, 4)

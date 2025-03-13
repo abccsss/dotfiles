@@ -1,20 +1,27 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 local map = vim.keymap.set
 local unmap = vim.keymap.del
 
 -- map H M L to move to the beginning, middle, and end of the line
-map({ "n", "x" }, "H", "^", { desc = "Move to beginning of line" })
-map({ "n", "x" }, "L", "$", { desc = "Move to end of line" })
-map({ "n", "x" }, "M", "gM", { desc = "Move to middle of line" })
+map({ "n", "x", "o" }, "H", "^", { desc = "Beginning of line" })
+map({ "n", "o" }, "L", "$", { desc = "End of line" })
+map({ "x" }, "L", "$h", { desc = "End of line" })
+map({ "n", "x", "o" }, "M", "gM", { desc = "Middle of line" })
+
+-- ctrl+h, ctrl+l to move cursor in insert mode
+map("i", "<c-h>", "<left>", { desc = "Move cursor left" })
+map("i", "<c-l>", "<right>", { desc = "Move cursor right" })
 
 -- ctrl+backspace to delete word
 map("i", "<c-bs>", "<c-w>", { desc = "Delete word" })
 
+-- enter to yank in select mode
+map("s", "<cr>", "<c-g>y", { desc = "Yank" })
+
+-- ctrl+shift+s to save without formatting
+map("n", "<cs-S>", "<cmd>noa w<cr>", { desc = "Save without formatting" })
+
 -- f7 to toggle terminal
-map({ "n", "x", "c", "t" }, "<f7>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle terminal" })
+map({ "n", "v", "c", "t" }, "<f7>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle terminal" })
 
 -- f8 to toggle dark theme
 Snacks.toggle

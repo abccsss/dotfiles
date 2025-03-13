@@ -1,0 +1,202 @@
+{
+  "hat": {
+    "prefix": "hat",
+    "body": ["\\hat{$1}"]
+  },
+  "tilde": {
+    "prefix": "tilde",
+    "body": ["\\tilde{$1}"]
+  },
+  "bar": {
+    "prefix": "bar",
+    "body": ["\\bar{$1}"]
+  },
+  "operatorname": {
+    "prefix": "operatorname",
+    "body": ["\\operatorname{$1}"]
+  },
+  "operatornamewithlimits": {
+    "prefix": "operatornamewithlimits",
+    "body": ["\\operatornamewithlimits{$1}"]
+  },
+  "big": {
+    "prefix": "big",
+    "body": ["\\bigl${1:(}", "\t$0", "\\bigr${2:)}"]
+  },
+  "Big": {
+    "prefix": "Big",
+    "body": ["\\Bigl${1:(}", "\t$0", "\\Bigr${2:)}"]
+  },
+  "bigg": {
+    "prefix": "bigg",
+    "body": ["\\biggl${1:(}", "\t$0", "\\biggr${2:)}"]
+  },
+  "Bigg": {
+    "prefix": "Bigg",
+    "body": ["\\Biggl${1:(}", "\t$0", "\\Biggr${2:)}"]
+  },
+  "left": {
+    "prefix": "left",
+    "body": ["\\left${1:(}", "\t$0", "\\right${2:)}"]
+  },
+  "begin": {
+    "prefix": "begin",
+    "body": ["\\begin{$1}", "\t$0", "\\end{$1}"]
+  },
+  "itemize": {
+    "prefix": "bitemize",
+    "body": ["\\begin{itemize}", "\t\\item", "\t\t$0", "\\end{itemize}"]
+  },
+  "enumerate": {
+    "prefix": "benumerate",
+    "body": ["\\begin{enumerate}", "\t\\item", "\t\t$0", "\\end{enumerate}"]
+  },
+  "frac": {
+    "prefix": "frac",
+    "body": ["\\frac{$1}{$2}"]
+  },
+  "equation": {
+    "prefix": "bequation",
+    "body": ["\\begin{equation}", "\t$0", "\\end{equation}"]
+  },
+  "equation*": {
+    "prefix": "bequation*",
+    "body": ["\\begin{equation*}", "\t$0", "\\end{equation*}"]
+  },
+  "align": {
+    "prefix": "balign",
+    "body": ["\\begin{align}", "\t$0", "\\end{align}"]
+  },
+  "align*": {
+    "prefix": "balign*",
+    "body": ["\\begin{align*}", "\t$0", "\\end{align*}"]
+  },
+  "alignat": {
+    "prefix": "balignat",
+    "body": ["\\begin{alignat}{$1}", "\t$0", "\\end{alignat}"]
+  },
+  "alignat*": {
+    "prefix": "balignat*",
+    "body": ["\\begin{alignat*}{$1}", "\t$0", "\\end{alignat*}"]
+  },
+  "gather": {
+    "prefix": "bgather",
+    "body": ["\\begin{gather}", "\t$0", "\\end{gather}"]
+  },
+  "gather*": {
+    "prefix": "bgather*",
+    "body": ["\\begin{gather*}", "\t$0", "\\end{gather*}"]
+  },
+  "multline": {
+    "prefix": "bmultline",
+    "body": ["\\begin{multline}", "\t$0", "\\end{multline}"]
+  },
+  "multline*": {
+    "prefix": "bmultline*",
+    "body": ["\\begin{multline*}", "\t$0", "\\end{multline*}"]
+  },
+  "aligned": {
+    "prefix": "baligned",
+    "body": ["\\begin{aligned}", "\t$0", "\\end{aligned}"]
+  },
+  "alignedat": {
+    "prefix": "balignedat",
+    "body": ["\\begin{alignedat}{$1}", "\t$0", "\\end{alignedat}"]
+  },
+  "array": {
+    "prefix": "barray",
+    "body": ["\\begin{array}{$1}", "\t$0", "\\end{array}"]
+  },
+  "cases": {
+    "prefix": "bcases",
+    "body": ["\\begin{cases}", "\t$0", "\\end{cases}"]
+  },
+  "matrix": {
+    "prefix": "bmatrix",
+    "body": ["\\begin{matrix}", "\t$0", "\\end{matrix}"]
+  },
+  "pmatrix": {
+    "prefix": "bpmatrix",
+    "body": ["\\begin{pmatrix}", "\t$0", "\\end{pmatrix}"]
+  },
+  "bmatrix": {
+    "prefix": "bbmatrix",
+    "body": ["\\begin{bmatrix}", "\t$0", "\\end{bmatrix}"]
+  },
+  "vmatrix": {
+    "prefix": "bvmatrix",
+    "body": ["\\begin{vmatrix}", "\t$0", "\\end{vmatrix}"]
+  },
+  "Vmatrix": {
+    "prefix": "bVmatrix",
+    "body": ["\\begin{Vmatrix}", "\t$0", "\\end{Vmatrix}"]
+  },
+  "smallmatrix": {
+    "prefix": "bsmallmatrix",
+    "body": ["\\begin{smallmatrix}", "\t$0", "\\end{smallmatrix}"]
+  },
+  "tikzcd": {
+    "prefix": "btikzcd",
+    "body": ["\\begin{tikzcd}", "\t$0", "\\end{tikzcd}"]
+  },
+  "tikzpicture": {
+    "prefix": "btikzpicture",
+    "body": ["\\begin{tikzpicture}", "\t$0", "\\end{tikzpicture}"]
+  },
+  "figure": {
+    "prefix": "bfigure",
+    "body": ["\\begin{figure}[$1:t]", "\t$0", "\\end{figure}"]
+  },
+  "table": {
+    "prefix": "btable",
+    "body": ["\\begin{table}[$1:t]", "\t$0", "\\end{table}"]
+  },
+  "tabular": {
+    "prefix": "btabular",
+    "body": ["\\begin{tabular}{$1}", "\t$0", "\\end{tabular}"]
+  },
+  "center": {
+    "prefix": "bcenter",
+    "body": ["\\begin{center}", "\t$0", "\\end{center}"]
+  },
+  "theorem": {
+    "prefix": "btheorem",
+    "body": ["\\begin{theorem}", "\t$0", "\\end{theorem}"]
+  },
+  "lemma": {
+    "prefix": "blemma",
+    "body": ["\\begin{lemma}", "\t$0", "\\end{lemma}"]
+  },
+  "corollary": {
+    "prefix": "bcorollary",
+    "body": ["\\begin{corollary}", "\t$0", "\\end{corollary}"]
+  },
+  "proposition": {
+    "prefix": "bproposition",
+    "body": ["\\begin{proposition}", "\t$0", "\\end{proposition}"]
+  },
+  "definition": {
+    "prefix": "bdefinition",
+    "body": ["\\begin{definition}", "\t$0", "\\end{definition}"]
+  },
+  "example": {
+    "prefix": "bexample",
+    "body": ["\\begin{example}", "\t$0", "\\end{example}"]
+  },
+  "remark": {
+    "prefix": "bremark",
+    "body": ["\\begin{remark}", "\t$0", "\\end{remark}"]
+  },
+  "proof": {
+    "prefix": "bproof",
+    "body": ["\\begin{proof}", "\t$0", "\\end{proof}"]
+  },
+  "para": {
+    "prefix": "bpara",
+    "body": ["\\begin{para}", "\t$0", "\\end{para}"]
+  },
+  "para[]": {
+    "prefix": "bpara[]",
+    "body": ["\\begin{para}[$1]", "\t$0", "\\end{para}"]
+  }
+}
